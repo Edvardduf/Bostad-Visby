@@ -1,5 +1,4 @@
-function App() {
-
+export default function Root() {
   return (
     <>
       <div>
@@ -8,5 +7,3 @@ function App() {
     </>
   );
 }
-
-export default App;
