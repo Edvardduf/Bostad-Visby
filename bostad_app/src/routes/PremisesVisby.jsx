@@ -2,7 +2,9 @@ import React from 'react'
 
 function PremisesVisby() {
   return (
-    <div>PremisesVisby</div>
+    <div>
+      PremisesVisby
+    </div>
   )
 }
 

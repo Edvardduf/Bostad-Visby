@@ -1,16 +1,16 @@
-import { Button } from "@/components/ui/button";
-import { CarouselDemo } from "@/components/demo/carouseldemo";
+
+import Navbar from "../components/Navbar";
 
 export default function Root() {
   return (
-    <>
-      <div className="flex justify-center">
-    <Button>Test knapp med shadcn</Button>
+    <div>
+      <Navbar />
+      <div
+        className="bg-cover h-screen"
+        style={{ backgroundImage: "url('/almedalen-visby.jpg')" }}
+      >
       </div>
-    <div className="flex justify-center pt-5">
-    <CarouselDemo></CarouselDemo>
-
+      hello world
     </div>
-    </>
   );
 }
