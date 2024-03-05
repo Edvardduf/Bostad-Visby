@@ -21,7 +21,7 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to={"/contacts"} className="text-lime-400 hover:text-gray-300">
+              <Link to={"/contact"} className="text-lime-400 hover:text-gray-300">
                 Kontakt
               </Link>
             </li>
