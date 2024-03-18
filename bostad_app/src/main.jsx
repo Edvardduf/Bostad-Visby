@@ -11,6 +11,8 @@ import Contact from "./routes/Contact";
 import Accomodation from "./routes/Accomodation";
 import RentOut from "./routes/RentOut";
 import PremisesVisby from "./routes/PremisesVisby"
+import Admin from "./routes/Admin";
+import Login from "./routes/Login";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +38,16 @@ const router = createBrowserRouter([
   {
     path: "/premises-visby",
     element: <PremisesVisby />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/kung",
+    element: <Admin />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/login",
+    element: <Login />,
     errorElement: <ErrorPage />
   },
 ]);
