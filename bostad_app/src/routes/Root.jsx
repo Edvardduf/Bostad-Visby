@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 {/* TODO So a lot of formating of the text to be done. Also some sort of searchbar */}
 
@@ -172,7 +173,7 @@ function Root() {
     </div>
   </div>
 </section>
-
+<Footer></Footer>
     </div>
   );
 }

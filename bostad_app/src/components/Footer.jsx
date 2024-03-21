@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="py-4 bg-gray-900 text-white text-center">
-      © {new Date().getFullYear()} Your Company. All rights reserved.
+    <footer className="py-8 bg-black text-white text-center font-semibold">
+      © {new Date().getFullYear()} Bostad Visby. All rights reserved.
+      <h1 className="py-4">Hemsida av Eddie Dove and Ray j</h1>
     </footer>
   );
 }
