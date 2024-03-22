@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import Spinner from "@/components/Spinner";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 function Detailed_listing() {
-    const params = useParams();
-    const { listingId } = params;
-    // async function loader({ params }) {
-    //     const detail = await getContact(params.Id);
-    //     return { contact };
-    //   }
+  const params = useParams();
+  const { listingId } = params;
 
-    const [initResponse, setInitResponse] = useState([]);
-    // console.log("This is Id:", id)
-    // const listing = ""
+  const [initResponse, setInitResponse] = useState(null);
+
   useEffect(() => {
     async function getDetailedListings() {
       try {
-        const response = await fetch("http://localhost:8000/listings/" + listingId);
+        const response = await fetch(
+          "http://localhost:8000/listings/" + listingId
+        );
         const data = await response.json();
         console.log("Detailed data", data);
         setInitResponse(data);
@@ -27,30 +25,66 @@ function Detailed_listing() {
   }, []);
 
   return (
-    <div>
-        <p>ID from URL: {listingId}</p>
+    <div>{ initResponse ? (
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        {/* Listing Title */}
+        <h2 className="text-3xl font-semibold mb-4">{initResponse.title}</h2>
+
+        {/* Listing Image */}
+        { initResponse.img.map((item) => <img src={item.url} alt="Listing" className="rounded-lg mb-4" />)
+        }
+        {/* Listing Details */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Left Column */}
+          <div>
+            <p className="text-gray-700 mb-2">
+              <span className="font-semibold">Adress: </span>
+              {initResponse.address}
+            </p>
+            <p className="text-gray-700 mb-2">
+            { initResponse.weeks.map((item) => <span className="font-semibold"> Vecka: {item.week_number}: {item.price}kr</span> )}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <span className="font-semibold">Bäddar: </span>
+              {initResponse.beds}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <span className="font-semibold">Boarea: </span>
+              {initResponse.sq_feet}m²
+            </p>
+          </div>
+
+          {/* Right Column */}
+          <div>
+            <p className="text-gray-700 mb-2">
+              <span className="font-semibold">Tomt:</span> {initResponse.lot_size}m²
+            </p>
+            <p className="text-gray-700 mb-2">
+              <span className="font-semibold">Bostadstyp:</span> {initResponse.property.name}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <span className="font-semibold">Läge: </span>
+              {initResponse.neighborhood["area"]}
+            </p>
+          </div>
+        </div>
+
+        {/* Listing Description */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-4">Beskrivning</h3>
+          <p className="text-gray-700">{initResponse.title}</p>
+        </div>
+      
+
+        {/* Contact Button */}
+        <div className="mt-8">
+          <button className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
+            Boka
+          </button>
+        </div>
+      </div>) : (<Spinner></Spinner>)}
     </div>
-//     <div className="container mx-auto mt-8">
-//     <h1 className="text-3xl font-semibold mb-4">{listing.title}</h1>
-//     <div className="flex flex-col md:flex-row">
-//       <div className="md:w-1/2 md:pr-8">
-//         <img src={listing.imageUrl} alt={listing.title} className="rounded-lg mb-4" />
-//         <p className="text-lg mb-4">{listing.description}</p>
-//       </div>
-//       <div className="md:w-1/2">
-//         <div className="bg-gray-100 p-4 rounded-lg">
-//           <h2 className="text-xl font-semibold mb-2">Details</h2>
-//           <p><strong>Price:</strong> ${listing.price}</p>
-//           <p><strong>Location:</strong> {listing.location}</p>
-//           <p><strong>Bedrooms:</strong> {listing.bedrooms}</p>
-//           <p><strong>Bathrooms:</strong> {listing.bathrooms}</p>
-//           <p><strong>Size:</strong> {listing.size} sq ft</p>
-//           {/* Add more details as needed */}
-//         </div>
-//       </div>
-//     </div>
-//   </div>
-  )
+  );
 }
 
-export default Detailed_listing
+export default Detailed_listing;
