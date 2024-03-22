@@ -26,12 +26,13 @@ function RentalForm() {
   };
 
   const handleWeekSelection = (event) => {
-    const value = Array.from(event.target.selectedOptions, option => option.value);
+    const { value } = event.target;
     setFormData(prevFormData => ({
       ...prevFormData,
       weekNumber: value
     }));
   };
+  
 
   const validateField = (name, value) => {
     let error = '';
@@ -45,22 +46,20 @@ function RentalForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+  
+    // Correcting field names and ensuring integer parsing where necessary
     const submissionData = {
-      ...formData,
-      listingId: parseInt(formData.listingId, 10),
-      weekNumber: formData.weekNumber ? parseInt(formData.weekNumber.replace('Week ', ''), 10) : null,
+      email: formData.email,
+      phone: parseInt(formData.phone, 10) || 0, // Default to 0 if NaN
+      is_company: formData.isCompany,
+      company: formData.company || "", // Ensure string, default to empty if undefined
+      listing_id: parseInt(formData.listingId, 10) || 0, // Default to 0 if NaN
+      week_number: parseInt(formData.weekNumber.replace('Week ', ''), 10) || 0, // Default to 0 if NaN or parsing fails
+      additional_info: formData.additionalInfo || "", // Ensure string, default to empty if undefined
     };
-    
-    // Validation for NaN, in case parsing fails
-    if (isNaN(submissionData.listingId) || isNaN(submissionData.weekNumber)) {
-      console.error("Form submission error: Week number or interested in object ID is not a valid number.");
-      // Handle the error appropriately
-      return;
-    }
   
     try {
-      const response = await fetch('http://localhost:8000/rental-applications/', {
+      const response = await fetch('http://localhost:8000/rental-applications', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -69,17 +68,22 @@ function RentalForm() {
       });
   
       if (!response.ok) {
+        console.log(Error)
+        console.log(submissionData)
         throw new Error('Network response was not ok');
+        console.log(Error);
       }
   
       const responseData = await response.json();
       console.log(responseData);
-      // Handle successful submission 
+      
+      // Reset form or provide feedback on success
+      setSubmitFeedback("Form submitted successfully!");
     } catch (error) {
       console.error("Form submission error:", error);
-      // Handle submission error 
+      setSubmitFeedback("An error occurred while submitting the form.");
     }
-  };
+};
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto my-10  py-4 px-4 sm:px-6 lg:px-8 bg-slate-200 rounded-sm">
