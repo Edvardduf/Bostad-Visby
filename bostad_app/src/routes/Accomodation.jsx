@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link, Outlet } from "react-router-dom";
+import Detailed_listing from "./Detailed_listing";
+
 
 function Accomodation() {
   const [initResponse, setInitResponse] = useState([]);
@@ -21,64 +24,70 @@ function Accomodation() {
     <div>
       <h1 className="text-center text-2xl pb-3">Alla annonser</h1>
       <div className="flex flex-wrap justify-center gap-3">
-      {initResponse.map((data, index) => (
-          <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden" key={index}>
+        {initResponse.map((data, index) => (
+          <div
+            className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
+            key={index}
+          >
             {/* Listing Image (Replace 'image-placeholder.jpg' with actual image URL) */}
             <img
               className="w-full h-48 object-cover object-center"
-              src={data.img.map((data1) => (data1.url))}
+              src={data.img.map((data1) => data1.url)}
               alt="Listing Image"
-              key={data.index}
-              />
+            />
 
-            <div className="px-4 py-2" key={index}>
+            <div className="px-4 py-2">
               {/* Listing Title */}
-              <h3 className="text-lg font-semibold text-gray-800 truncate" key={index}>
+              <h3 className="text-lg font-semibold text-gray-800 truncate">
                 {data.title}
               </h3>
 
               {/* Listing Description */}
-              <p className="text-gray-600 mt-2" key={index}>{data.description}</p>
+              <p className="text-gray-600 mt-2">{data.description}</p>
 
               {/* Listing Details */}
-              <div className="mt-4" key={index}>
+              <div className="mt-4">
                 {/* Property Type */}
-                <p className="text-gray-700" key={index}>
+                <p className="text-gray-700">
                   Läge:{" "}
-                  <span className="font-semibold" key={index}>{data.neighborhood.area}</span>
+                  <span className="font-semibold">
+                    {data.neighborhood.area}
+                  </span>
                 </p>
                 {/* Beds */}
-                <p className="text-gray-700" key={index}>
+                <p className="text-gray-700">
                   Bäddar: <span className="font-semibold">{data.beds}</span>
                 </p>
                 {/* Lot Size */}
-                <p className="text-gray-700" key={index}>
+                <p className="text-gray-700">
                   Boyta:{" "}
-                  <span className="font-semibold" key={index}>{data.sq_feet} m²</span>
+                  <span className="font-semibold">{data.sq_feet} m²</span>
                 </p>
               </div>
             </div>
 
             {/* Listing Footer */}
-            <div className="px-4 pt-3 pb-2 border-t border-gray-200" key={index}>
+            <div className="px-4 pt-3 pb-2 border-t border-gray-200">
               {/* Price */}
-              <p className="text-lg text-gray-800 font-semibold" key={index}>Pris: {data.weeks.map((data1) => (data1.price))} kr</p>
+              <p className="text-lg text-gray-800 font-semibold">
+                Pris: {data.weeks.map((data1) => data1.price)} kr
+              </p>
               {/* Location */}
-              <p className="mt-2 text-sm text-gray-600" key={index}>
+              <p className="mt-2 text-sm text-gray-600">
                 Adress: {data.address}
               </p>
               {/* More details button */}
-              <a
-                href="#"
+              <Link
+                to={"/accommodation/" + data.id}
                 className="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                key={index}
-                >
+              >
                 Mer info
-              </a>
+              </Link>
             </div>
           </div>
-      ))}
+        ))}
       </div>
+      <Outlet />
     </div>
   );
 }
