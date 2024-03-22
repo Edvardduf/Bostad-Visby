@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 // TODO Göra om så att det passar våran listings.
 
-function Courses() {
+function AdminListings() {
   const [courses, setCourses] = useState([]);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [selectedCourseId, setSelectedCourseId] = useState(null);
@@ -129,7 +129,11 @@ function Courses() {
 
   return (
     <div className="min-w-xl">
-      <div className="min-h-screen my-0 bg-white border shadow-md">
+      <div className="min-h-screen my-0 border shadow-md"
+              style={{
+                background:
+                  "linear-gradient(to bottom, #FFFFFF, #EBF5FB, #E8F8F5, #E8F6F3, #D0ECE7, #D1F2EB, #EAFAF1 )",
+              }}>
         {/* DELETE MODAL START */}
         {deleteModalOpen && (
           <div className="fixed inset-0 z-50 flex overflow-auto bg-gray-800 bg-opacity-50">
@@ -294,7 +298,7 @@ function Courses() {
         <div className="p-6">
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
-              <p className="mt-2 text-lg font-bold text-black">
+              <p className="mt-2 text-2xl font-semibold text-black">
                 Dina listings
               </p>
             </div>
@@ -302,7 +306,10 @@ function Courses() {
               <button
                 onClick={() => setShowAddModal(true)}
                 type="button"
-                className="block px-6 py-4 text-sm font-semibold text-center text-black bg-fuchsia-100 rounded-md shadow-sm hover:bg-pink-300 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                className="block px-6 py-4 text-sm font-semibold text-center text-black rounded-md shadow-sm hover:bg-white hover:text-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" style={{
+                  background:
+                    "linear-gradient(to right, #D6E6F2, #F3E2E7)",
+                }}
               >
                 Skapa en listing
               </button>
@@ -318,13 +325,13 @@ function Courses() {
                         scope="col"
                         className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
                       >
-                        Kursnamn
+                        Lisintg
                       </th>
                       <th
                         scope="col"
                         className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                       >
-                        Poäng
+                        ID
                       </th>
                       <th
                         scope="col"
@@ -395,4 +402,4 @@ function Courses() {
   );
 }
 
-export default Courses;
+export default AdminListings;

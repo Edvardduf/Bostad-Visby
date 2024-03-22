@@ -131,7 +131,7 @@ function Login() {
         <div>
           <button
             type="submit"
-            className="group relative w-2/5 flex justify-center  mx-auto py-3 px-4 border border-transparent text-sm font-bold rounded-md text-white bg-green-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="group relative w-2/5 flex justify-center  mx-auto py-3 px-4 border border-transparent text-sm font-bold rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Logga in
           </button>

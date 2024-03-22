@@ -1,4 +1,5 @@
 import React from "react";
+import RentersForm from "../components/RenterForm";
 
 function RentOut() {
   return (
@@ -12,6 +13,7 @@ function RentOut() {
         <li className="hover:underline">Kontakt</li>
         <li className="hover:underline">Köp</li>
       </ul>
+      <RentersForm></RentersForm>
     </div>
   );
 }
