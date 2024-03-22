@@ -19,15 +19,14 @@ function Root() {
         <div className="container mx-auto">
           <img
             alt="Hero"
-            className="mx-auto mt-4 aspect-[4/2] overflow-hidden rounded-t-xl rounded-b-md object-cover shadow-2xl"
+            className="mx-auto mt-4 aspect-[4/2] overflow-hidden rounded-t-xl rounded-b-md object-cover shadow-2xl max-w-full h-auto"
             src="https://bostadvisby.se/images/almedalen-visby.jpg"
           />
         </div>
       </section>
 
       {/* Main Content Sections */}
-      {/* Main Content Section */}
-      <section className="bg-white h-[55vh] flex flex-col justify-center">
+      <section className="bg-white h-[55vh] flex flex-col justify-center overflow-hidden">
         <div className="container flex flex-col md:flex-row items-center justify-between px-6 mx-auto space-y-4 md:space-y-0">
           <div className="md:w-4/5 flex justify-center md:justify-start md:pr-4">
             <img
@@ -36,7 +35,7 @@ function Root() {
               className="h-[45vh] md:h-auto md:w-3/4 object-cover rounded-sm"
             />
           </div>
-          <div className="flex flex-col md:w-1/2 items-center md:items-start space-y-2 md:space-y-4">
+          <div className="flex flex-col md:w-1/2 items-center md:items-start space-y-2 md:space-y-4 max-w-full h-auto">
             <h1 className="text-3xl md:text-4xl font-bold md:text-left leading-snug">
               Vill ni lyckas med er Almedalsvecka? Vi hjälper er hitta er bas!
             </h1>
@@ -56,13 +55,13 @@ function Root() {
 
       {/* Section 2 - Flipped Image and Text */}
       <section
-        className="h-[55vh] flex flex-col justify-center"
+        className="h-[55vh] flex flex-col justify-center overflow-hidden"
         style={{
           background:
           "linear-gradient(to bottom, #CBD5E1, #E0E7FF, #FEF9C3, #FFE4D9)",
         }}
       >
-        <div className="container flex flex-col md:flex-row items-center justify-between px-6 mx-auto space-y-4 md:space-y-0">
+        <div className="container flex flex-col md:flex-row items-center justify-between px-6 mx-auto space-y-4 md:space-y-0 max-w-full h-auto">
           <div className="flex flex-col md:w-1/2 items-center md:items-end space-y-2 md:space-y-4 md:pl-4">
             <h1 className="text-3xl md:text-4xl font-bold md:text-right leading-snug">
               5 TJÄNSTER SOM GER ER EN TRYGG BOKNING SAMT SMIDIG PROCESS
@@ -97,9 +96,9 @@ function Root() {
       </section>
 
       {/* Section 3 */}
-      <section className="bg-white h-[55vh] flex flex-col justify-center">
+      <section className="bg-white h-[55vh] flex flex-col justify-center overflow-auto">
         {/* Repeat the structure of the main content section here */}
-        <div className="container flex flex-col md:flex-row items-center justify-between px-6 mx-auto space-y-4 md:space-y-0">
+        <div className="container flex flex-col md:flex-row items-center justify-between px-6 mx-auto space-y-4 md:space-y-0 max-w-full h-auto">
           <div className="md:w-4/5 flex justify-center md:justify-start md:pr-4">
             <img
               src="https://d13gofjvlwna3m.cloudfront.net/uploads/2021/05/rg_lergrav-scaled.jpg?auto=format%2Ccompress&format=lossless&q=60"
@@ -136,13 +135,13 @@ function Root() {
 
       {/* Section 4 */}
       <section
-  className="h-[55vh] flex flex-col justify-between"
+  className="h-[55vh] flex flex-col justify-between overflow-hidden"
   style={{
     background:
       "linear-gradient(to bottom, #D6E6F2, #F3E2E7, #F3E6F5)",
   }}
 >
-  <div className="container flex flex-col md:flex-row items-center justify-between px-6 mx-auto space-y-4 md:space-y-0 pt-6">
+  <div className="container flex flex-col md:flex-row items-center justify-between px-6 mx-auto space-y-4 md:space-y-0 pt-6 max-w-full h-auto">
     <div className="flex flex-col md:w-1/2 items-center md:items-end space-y-2 md:space-y-4 md:pl-4">
       <h1 className="text-4xl md:text-3xl font-bold md:text-right leading-normal">
         Funderar ni på att hyra ut under Almedalsveckan? <br />Vi har kunder
@@ -164,7 +163,7 @@ function Root() {
         Almedalsveckan.</p>
       </p>
     </div>
-    <div className="md:w-4/5 flex justify-center md:justify-end md:pl-4">
+    <div className="md:w-4/5 flex justify-center md:justify-end md:pl-4 overflow-hidden">
       <img
         src="https://www.stadtillstrand.se/wp-content/uploads/2021/05/visby-gotland-skymning.jpg"
         alt=""
