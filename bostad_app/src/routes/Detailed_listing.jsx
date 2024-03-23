@@ -1,3 +1,4 @@
+import RentalForm from "@/components/RentalForm";
 import Spinner from "@/components/Spinner";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -15,7 +16,6 @@ function Detailed_listing() {
           "http://localhost:8000/listings/" + listingId
         );
         const data = await response.json();
-        console.log("Detailed data", data);
         setInitResponse(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -31,7 +31,7 @@ function Detailed_listing() {
         <h2 className="text-3xl font-semibold mb-4">{initResponse.title}</h2>
 
         {/* Listing Image */}
-        { initResponse.img.map((item) => <img src={item.url} alt="Listing" className="rounded-lg mb-4" />)
+        { initResponse.img.map((item) => <img src={item.url} alt="Listing" className="rounded-lg mb-4" key={item.url}/>)
         }
         {/* Listing Details */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -42,7 +42,7 @@ function Detailed_listing() {
               {initResponse.address}
             </p>
             <p className="text-gray-700 mb-2">
-            { initResponse.weeks.map((item) => <span className="font-semibold"> Vecka: {item.week_number}: {item.price}kr</span> )}
+            { initResponse.weeks.map((item, index) => <span className="font-semibold" key={index}> Vecka: {item.week_number}: {item.price}kr</span> )}
             </p>
             <p className="text-gray-700 mb-2">
               <span className="font-semibold">Bäddar: </span>
@@ -78,9 +78,7 @@ function Detailed_listing() {
 
         {/* Contact Button */}
         <div className="mt-8">
-          <button className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
-            Boka
-          </button>
+          <RentalForm></RentalForm>
         </div>
       </div>) : (<Spinner></Spinner>)}
     </div>

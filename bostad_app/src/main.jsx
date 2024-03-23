@@ -29,15 +29,9 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/listing",
+    path: "/listing/:listingId",
     element: <Detailed_listing />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: ":listingId", // Nested dynamic route under /user
-        element: <Detailed_listing />,
-      },
-    ],
   },
   {
     path: "/rent-out",
