@@ -71,7 +71,6 @@ function RentalForm() {
         console.log(Error)
         console.log(submissionData)
         throw new Error('Network response was not ok');
-        console.log(Error);
       }
   
       const responseData = await response.json();

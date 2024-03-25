@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 
 function Root() {
   return (
-    <div>
+    <div >
       <Navbar />
       <section
         className="w-full pt-8 md:pt-16 lg:pt-24"
@@ -43,11 +43,9 @@ function Root() {
               En bra bas för era medarbetare är en förutsättning för att ni
               skall lyckas med just er satsning under Almedalsveckan! Och kanske
               behöver ni även hitta en mötesplats i anslutning till ert boende?
-              Vi har flest objekt att välja på! Just nu kan ni välja och vraka
-              bland alla objekt märkta med 2023. Skulle något intressera er så
+              Vi har flest objekt att välja på! Skulle något intressera er så
               kollar vi med värden om de vill hyra ut även nästa sommar.
-              Objekten uppdateras efterhand under hösten. Almedalsveckan 2024
-              planeras att hållas under vecka 26.
+              Objekten uppdateras efterhand under hösten.
             </p>
           </div>
         </div>
@@ -117,16 +115,7 @@ function Root() {
               hjälper er. Maila oss direkt! Lägg ingen tid på att skriva avtal
               eller anlita advokat vi har färdiga mallar för hyresavtal i
               Scrive. Avtalen är beprövade och processen har slipats på genom
-              tusentals bokningar sedan Almedalsveckan 2016. Lägg ingen tid på
-              städning innan ni åker hem - Värdarna ordnar slutstäd och lakan åt
-              er, det är obligatoriskt i våra avtal.a bas för era medarbetare är
-              en förutsättning för att ni skall lyckas med just er satsning
-              under Almedalsveckan! Och kanske behöver ni även hitta en
-              mötesplats i anslutning till ert boende? Vi har flest objekt att
-              välja på! Just nu kan ni välja och vraka bland alla objekt märkta
-              med 2023. Skulle något intressera er så kollar vi med värden om de
-              vill hyra ut även nästa sommar. Objekten uppdateras efterhand
-              under hösten. Almedalsveckan 2024 planeras att hållas under vecka
+              tusentals bokningar sedan Almedalsveckan 2016. Almedalsveckan 2024 planeras att hållas under vecka
               26.
             </p>
           </div>

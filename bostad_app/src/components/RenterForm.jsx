@@ -19,7 +19,7 @@ function RentersForm() {
     event.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:8000/renters/', {
+      const response = await fetch('http://localhost:8000/renter/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,7 +43,10 @@ function RentersForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto my-10 p-4">
+    <form onSubmit={handleSubmit} className="space-y-6 max-w-lg mx-auto my-10 p-8 bg-white rounded-lg shadow-lg">
+       <div className='text-3xl font-bold text-center text-gray-900 mb-6'>
+        <h1>JAG ÄR INTRESSERAD AV ATT HYRA UT</h1>
+      </div>
       <div>
         <label htmlFor="mail" className="block text-sm font-medium text-gray-700">Email</label>
         <input
@@ -58,7 +61,7 @@ function RentersForm() {
       </div>
 
       <div>
-        <label htmlFor="phone_number" className="block text-sm font-medium text-gray-700">Phone Number</label>
+        <label htmlFor="phone_number" className="block text-sm font-medium text-gray-700">Telefon nummer</label>
         <input
           type="tel"
           name="phone_number"
@@ -71,7 +74,7 @@ function RentersForm() {
       </div>
 
       <div>
-        <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">First Name</label>
+        <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">Förnamn</label>
         <input
           type="text"
           name="first_name"
@@ -84,7 +87,7 @@ function RentersForm() {
       </div>
 
       <div>
-        <label htmlFor="last_name" className="block text-sm font-medium text-gray-700">Last Name</label>
+        <label htmlFor="last_name" className="block text-sm font-medium text-gray-700">Efternamn</label>
         <input
           type="text"
           name="last_name"
@@ -96,8 +99,8 @@ function RentersForm() {
         />
       </div>
 
-      <button type="submit" className="mt-2 px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-500 hover:bg-blue-700">
-        Submit
+      <button type="submit" className="mt-4 px-6 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 w-full">
+      Skicka förfrågan
       </button>
     </form>
   );
