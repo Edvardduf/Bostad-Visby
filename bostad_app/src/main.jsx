@@ -10,9 +10,10 @@ import ErrorPage from "./ErrorPage";
 import Contact from "./routes/Contact";
 import Accomodation from "./routes/Accomodation";
 import RentOut from "./routes/RentOut";
-import ContactUsPage from "./routes/PremisesVisby"
+import ContactUsPage from "./routes/ContactPage"
 import Admin from "./routes/Admin";
 import Login from "./routes/Login";
+import CreateListings from "./routes/CreateListings";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,11 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/create-listing",
+    element: <CreateListings />,
     errorElement: <ErrorPage />
   },
 ]);

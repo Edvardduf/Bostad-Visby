@@ -156,7 +156,7 @@ function Root() {
       <img
         src="https://www.stadtillstrand.se/wp-content/uploads/2021/05/visby-gotland-skymning.jpg"
         alt=""
-        className="h-[45vh] md:h-auto md:w-3/4 object-cover rounded-sm"
+        className="h-[25vh] md:h-auto md:w-3/4 object-cover rounded-sm"
       />
     </div>
   </div>

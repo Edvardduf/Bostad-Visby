@@ -2,6 +2,7 @@ import React from "react";
 import RentersForm from "../components/RenterForm";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import ListingForm from "../components/ListingsForm";
 
 function RentOut() {
   return (
@@ -9,11 +10,11 @@ function RentOut() {
       <Navbar></Navbar>
       <div className=" py-8"         style={{
           background:
-            "linear-gradient(to bottom, #FFFFFF, #EBF5FB, #E8F8F5, #E8F6F3, #D0ECE7, #D1F2EB, #EAFAF1 )",
+            "linear-gradient(to bottom, #FFFFFF ,#EAFAF1 , #FFFFFF ,#EBF5FB, #E8F8F5, #D0ECE7, #EAFAF1 )",
         }} >
         <div className="flex flex-wrap -mx-4">
           <div className="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
-            <RentersForm />
+            <ListingForm />
           </div>
           <div className="w-full lg:w-1/2 px-4">
             <div className="ml-4 prose prose-lg max-w-prose" >
