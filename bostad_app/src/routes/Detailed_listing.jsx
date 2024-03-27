@@ -26,7 +26,10 @@ function Detailed_listing() {
 
   return (
     <div>{ initResponse ? (
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto px-4 py-8" style={{
+        background:
+          "linear-gradient(to bottom, #FFFFFF, #EBF5FB, #E8F8F5, #E8F6F3, #D0ECE7, #D1F2EB, #EAFAF1 )",
+      }}>
         {/* Listing Title */}
         <h2 className="text-3xl font-semibold mb-4">{initResponse.title}</h2>
 

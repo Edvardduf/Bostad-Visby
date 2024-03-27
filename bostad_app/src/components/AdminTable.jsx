@@ -5,17 +5,15 @@ function AdminTable(data) {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
-  const [formData, setFormData] = useState(null);
+  const [formData, setFormData] = useState({});
   const [rows, setRows] = useState([]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    
+
     setFormData({ ...formData, [name]: value });
-    
   };
-
-
+  
   async function deleteRow(rowId) {
     console.log(`http://localhost:8000/${data.url}/${rowId}`);
     try {
@@ -42,9 +40,10 @@ function AdminTable(data) {
     }
   }
 
-  async function editRow(params) {
-    params.e.prevent.default
-    console.log(`http://localhost:8000/${data.url}/${params.rowId}`);
+  async function editRow(rowId) {
+    console.log(`http://localhost:8000/${data.url}/${rowId}`);
+    console.log(formData);
+    console.log(JSON.stringify(formData));
     try {
       const response = await fetch(
         `http://localhost:8000/${data.url}/${rowId}`,
@@ -53,12 +52,17 @@ function AdminTable(data) {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
+          body: JSON.stringify(formData),
         }
       );
       // check for error response
       if (!response.ok) {
-        // get error message from body or default to response status
-        throw new Error(`HTTP error! status: ${response.status}`);
+        if (response.status === 422) {
+          const errorData = await response.json(); // Parse response body as JSON
+          throw new Error(errorData.message); // Throw error with the message received from the server
+        } else {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
       }
       // deleteRowFromState(rowId);
     } catch (error) {
@@ -104,7 +108,13 @@ function AdminTable(data) {
                   <div className="fixed inset-0 z-50 flex overflow-auto bg-gray-800 bg-opacity-50">
                     <div className="relative flex flex-col w-full max-w-md p-8 m-auto bg-white rounded-lg shadow-lg">
                       <h2 className="text-xl font-semibold">Ändra rad</h2>
-                      <form method="put" onSubmit={() => editRow(e, selectedId)}>
+                      <form
+                        method="put"
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          editRow(selectedId);
+                        }}
+                      >
                         {keys.map((key) => (
                           <div key={key}>
                             <label htmlFor={key} className="block">
@@ -182,8 +192,8 @@ function AdminTable(data) {
                         className="ml-8 text-indigo-600 hover:text-indigo-900"
                         onClick={() => {
                           setEditModalOpen(true);
-                          setFormData(item)
-                          setSelectedId(item.id)
+                          setFormData(item);
+                          setSelectedId(item.id);
                         }}
                       >
                         Ändra<span className="sr-only"></span>
