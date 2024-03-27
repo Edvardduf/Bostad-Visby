@@ -1,9 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Root from "./routes/Root";
 import ErrorPage from "./ErrorPage";
@@ -14,27 +11,34 @@ import ContactUsPage from "./routes/ContactPage"
 import Admin from "./routes/Admin";
 import Login from "./routes/Login";
 import CreateListings from "./routes/CreateListings";
+import Detailed_listing from "./routes/Detailed_listing";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
   },
   {
     path: "/contact",
     element: <Contact />,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
   },
   {
-    path: "/accommodation",
-    element: <Accomodation/>,
-    errorElement: <ErrorPage />
+    path: "/accommodation/",
+    element: <Accomodation />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/accommodations/:listingId",
+    element: <Detailed_listing />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/rent-out",
     element: <RentOut />,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
   },
   {
     path: "/contact-us",
@@ -42,14 +46,14 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />
   },
   {
-    path: "/kung",
-    element: <Admin />,
-    errorElement: <ErrorPage />
+    path: "/admin",
+    element: <ProtectedRoute />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/login",
     element: <Login />,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
   },
   {
     path: "/create-listing",
