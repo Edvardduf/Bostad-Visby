@@ -45,7 +45,9 @@ function RentersForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-lg mx-auto my-10 p-8 bg-white rounded-lg shadow-lg">
        <div className='text-3xl font-bold text-center text-gray-900 mb-6'>
-        <h1>JAG ÄR INTRESSERAD AV ATT HYRA UT</h1>
+        <h1>Hyra ut</h1>
+        <h2 className=' text-base font-semibold pt-1'>Vad kul att du vill hyra genom Bostad Visby!</h2>
+        <p className='text-sm font-medium pt-1'>Var vänlig och fyll ut dessa fält för att fortsätta</p>
       </div>
       <div>
         <label htmlFor="mail" className="block text-sm font-medium text-gray-700">Email</label>
@@ -99,8 +101,8 @@ function RentersForm() {
         />
       </div>
 
-      <button type="submit" className="mt-4 px-6 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 w-full">
-      Skicka förfrågan
+      <button type="submit" className="mt-4 px-6 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-sky-500 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 w-full">
+      Skicka
       </button>
     </form>
   );
