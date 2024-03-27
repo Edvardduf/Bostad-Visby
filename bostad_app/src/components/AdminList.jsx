@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 // TODO Göra om så att det passar våran listings.
 
-function AdminListings() {
+function AdminList() {
   const [courses, setCourses] = useState([]);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [selectedCourseId, setSelectedCourseId] = useState(null);
@@ -357,7 +357,7 @@ function AdminListings() {
                     {courses.map((course) => (
                       <tr key={course.id}>
                         <td className="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-0">
-                          {course.name}
+                          Namn
                         </td>
                         <td className="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
                           {course.credits}
@@ -402,4 +402,4 @@ function AdminListings() {
   );
 }
 
-export default AdminListings;
+export default AdminList;
