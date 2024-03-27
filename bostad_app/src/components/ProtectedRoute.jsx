@@ -1,12 +1,14 @@
 import Admin from "@/routes/Admin";
 import React, { useState } from "react"
 import AccessDenied from "./AccessDenied";
+import useAuthStore from "@/stores/store";
 
 function ProtectedRoute() {
-    const token = localStorage.getItem("token");
+    const {token}  = useAuthStore();
+  
   return (
     <div>
-       { token ?  <Admin /> : <AccessDenied/> }
+       { token !== null ?  <Admin /> : <AccessDenied/> }
     </div>
   )
 }

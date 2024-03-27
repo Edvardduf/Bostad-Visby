@@ -3,8 +3,15 @@ import SideNav from '../components/sidenav'
 import AdminTable from '@/components/AdminTable'
 import AdminListing from '@/components/AdminListing';
 import AdminList from '@/components/AdminList';
+import useAuthStore from '@/stores/store';
 
 function Admin() {
+  const { token, fetchUser, userData } = useAuthStore();
+  useEffect(() => {
+    if (token) {
+      fetchUser();
+    }
+  }, []);
   const [listings, setListings] = useState([]);
   const [renters, setRenters] = useState([]);
   const [rentOutApplication, setRentOutApplication] = useState([]);
@@ -22,7 +29,7 @@ function Admin() {
   ];
 
   const renterUrl = "renters"
-  const rentalApplicationUrl = "rental-application"
+  const rentalApplicationUrl = "rental-applications"
   const rentOutApplicationUrl = "rentout-application"
 
   const renderContent = () => {
@@ -95,12 +102,12 @@ function Admin() {
 
 
   return (
-    <div className="relative flex h-screen">
+    <div className="relative flex h-screen" >
       <SideNav tabs={tabs} activeTab={activeTab} onTabChange={handleTabChange}></SideNav>
       <div
         className="flex-1 pl-64 overflow-auto border outline-none bg-gray-50 max-w-screen" //Ändra på pl-64 så den är responsive
       >
-      <h1 className="text-center text-2xl">Välkommen till Adminsidan, Johan!</h1>
+      <h1 className="text-center text-2xl">Välkommen till Adminsidan, {userData.first_name}!</h1>
       {/* <AdminTable data={listings}/> */}
       <div className="mt-4">{renderContent()}</div>
     </div>
