@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuthStore from '@/stores/store';
+import ProtectedRoute from '@/components/ProtectedRoute';
 
 function Login() {
 
@@ -62,7 +63,7 @@ function Login() {
             const data = await response.json();
             setToken(data.access_token); // Save the token in the global state
             console.log(token);
-            navigate("/kung");
+            navigate("/admin");
             // Handle successful login, e.g., storing the access token
             console.log(data);
           } else if (response.status === 400 || response.status === 401) {

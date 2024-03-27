@@ -8,9 +8,9 @@ import Contact from "./routes/Contact";
 import Accomodation from "./routes/Accomodation";
 import RentOut from "./routes/RentOut";
 import PremisesVisby from "./routes/PremisesVisby";
-import Admin from "./routes/Admin";
 import Login from "./routes/Login";
 import Detailed_listing from "./routes/Detailed_listing";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -24,12 +24,12 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/accommodation",
+    path: "/accommodation/",
     element: <Accomodation />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/listing/:listingId",
+    path: "/accommodations/:listingId",
     element: <Detailed_listing />,
     errorElement: <ErrorPage />,
   },
@@ -44,8 +44,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/kung",
-    element: <Admin />,
+    path: "/admin",
+    element: <ProtectedRoute />,
     errorElement: <ErrorPage />,
   },
   {
