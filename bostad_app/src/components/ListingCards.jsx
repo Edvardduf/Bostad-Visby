@@ -16,6 +16,7 @@ function ListingCards() {
     }
     getListings();
   }, []);
+  
   return (
     <div className="flex flex-wrap justify-center gap-3">
     {initResponse.map((data, index) => (

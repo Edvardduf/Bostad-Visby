@@ -1,145 +1,121 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import RentersForm from "./RenterForm";
 
-// const fetchNeighborhoods = async () => {
-//   try {
-//     const response = await fetch("http://localhost:8000/neighborhood");
-//     if (!response.ok) {
-//       throw new Error("Network response was not ok");
-//     }
-//     return await response.json();
-//   } catch (error) {
-//     console.error("There was a problem with the fetch operation:", error);
-//     return []; // Return an empty array in case of error
-//   }
-// };
-
-const ListingForm = () => {
-  const [formData, setFormData] = useState({
-    title: "",
-    expiration_date: "",
-    // featured: false,
-    address: "",
-    beds: "",
-    description: "",
-    lot_size: "",
-    sq_feet: 0,
-    property_type_id: 0,
-    renter_id: 0,
-    user_id: 1,
-    neighborhood_id: 0,
-    images_url: "",
-  });
-
-  // function debounce(func, wait) {
-  //   let timeout;
-  //   return function executedFunction(...args) {
-  //     clearTimeout(timeout);
-  //     timeout = setTimeout(() => {
-  //       func(...args);
-  //     }, wait);
-  //   };
-  // }
+function CopyListingForm() {
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        func(...args);
+      }, wait);
+    };
+  }
   // Simulated fetch functions for relationship fields
-  // const fetchPropertyTypes = async () => {
-  //   try {
-  //     const response = await fetch("http://localhost:8000/property");
-  //     if (!response.ok) {
-  //       throw new Error("Network response was not ok");
-  //     }
-  //     return await response.json();
-  //   } catch (error) {
-  //     console.error("There was a problem with the fetch operation:", error);
-  //     return []; // Return an empty array in case of error
-  //   }
-  // };
-
-  const [propertyTypes, setPropertyTypes] = useState(null);
-  const [neighborhoods, setNeighborhoods] = useState(null);
-
-  useEffect(() => {
-    async function fetchPropertyTypes() {
-      try {
-        const response = await fetch("http://localhost:8000/property");
-        const data = await response.json();
-        setPropertyTypes(data);
-      } catch (error) {
-        console.error("There was a problem with the fetch operation:", error);
-      }
-    }
-    fetchPropertyTypes();
-  }, []);
-
-  useEffect(() => {
-    async function fetchNeighborhoods() {
-      try {
-        const response = await fetch("http://localhost:8000/neighborhood");
-        const data = await response.json();
-        setNeighborhoods(data);
-        console.log(neighborhoods)
-      } catch (error) {
-        console.error("There was a problem with the fetch operation:", error);
-      }
-    }
-    fetchNeighborhoods();
-  }, []);
-
-  const parsedFormData = {
-    ...formData,
-    lot_size: parseInt(formData.lot_size),
-    sq_feet: parseInt(formData.sq_feet),
-    user_id: parseInt(formData.user_id),
-    renter_id: parseInt(formData.renter_id),
-    property_type_id: parseInt(formData.property_type_id),
-    neighborhood_id: parseInt(formData.neighborhood_id),
-  };
-
-  // const [imagePreviews, setImagePreviews] = useState([]);
-
-  const [renterExists, setRenterExists] = useState(null);
-  const [showRenterModal, setShowRenterModal] = useState(false);
-
-  const toggleRenterModal = () => {
-    setShowRenterModal(!showRenterModal);
-  };
-
-  const checkRenterExistence = async (email) => {
+  async function fetchPropertyTypes() {
     try {
-      const response = await fetch(`http://localhost:8000/renters/${email}`);
-      if (!response.ok) throw new Error("Network response was not ok");
-      const exists = await response.json();
-      if (!exists) {
-        setTimeout(() => setShowRenterModal(true), 1200); // Delay showing the modal
-      } else {
+      const response = await fetch("http://localhost:8000/property");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+      return []; // Return an empty array in case of error
+    }
+  }
+ async 
+
+  const fetchNeighborhoods = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/neighborhood");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+      return []; // Return an empty array in case of error
+    }
+  };
+
+  const ListingForm = () => {
+    const [formData, setFormData] = useState({
+      title: "",
+      expiration_date: "",
+      featured: false,
+      address: "",
+      beds: "",
+      description: "",
+      lot_size: 0,
+      sq_feet: 0,
+      property_type_id: "",
+      renter_id: "",
+      user_id: "",
+      neighborhood_id: "",
+      images: [],
+    });
+
+    const [propertyTypes, setPropertyTypes] = useState([]);
+    const [neighborhoods, setNeighborhoods] = useState([]);
+    const [imagePreviews, setImagePreviews] = useState([]);
+
+    useEffect(() => {
+      fetchPropertyTypes().then(setPropertyTypes);
+      fetchNeighborhoods().then(setNeighborhoods);
+    }, []);
+
+    const [renterExists, setRenterExists] = useState(null);
+    const [showRenterModal, setShowRenterModal] = useState(false);
+
+    const toggleRenterModal = () => {
+      setShowRenterModal(!showRenterModal);
+    };
+    const checkRenterExistence = async (email) => {
+      try {
+        const response = await fetch(
+          `http://localhost:8000/renter/${encodeURIComponent(email)}`
+        );
+        if (!response.ok) throw new Error("Network response was not ok");
+        const exists = await response.json();
+        if (!exists) {
+          setTimeout(() => setShowRenterModal(true), 500); // Delay showing the modal
+        } else {
+          setShowRenterModal(false);
+        }
+      } catch (error) {
+        console.error("Error checking renter existence:", error);
         setShowRenterModal(false);
       }
-    } catch (error) {
-      console.error("Error checking renter existence:", error);
-      setShowRenterModal(false);
-    }
-  };
+    };
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    if (type === "checkbox") {
-      setFormData({ ...formData, [name]: checked });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
-  };
-  // const handleImageChange = (e) => {
-  //   const files = Array.from(e.target.files);
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     images: files,
-  //   }));
-  //   setImagePreviews(files.map((file) => URL.createObjectURL(file)));
-  // };
+    const handleChange = (e) => {
+      const { name, value, type, checked } = e.target;
+      if (type === "checkbox") {
+        setFormData({ ...formData, [name]: checked });
+      } else {
+        setFormData({ ...formData, [name]: value });
+      }
+      if (name === "renterEmail") {
+        // Delay the existence check to avoid too frequent checks
+        setTimeout(() => checkRenterExistence(value), 500);
+      }
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form data:", parsedFormData);
-    // Here you would submit formData to your backend API
+    const handleImageChange = (e) => {
+      const files = Array.from(e.target.files);
+      setFormData((prevState) => ({
+        ...prevState,
+        images: files,
+      }));
+      setImagePreviews(files.map((file) => URL.createObjectURL(file)));
+    };
+
+    // const handleSubmit = (e) => {
+    //   e.preventDefault();
+    //   console.log("Form data:", formData);
+    //   // Here you would submit formData to your backend API
+    // };
   };
 
   return (
@@ -151,7 +127,7 @@ const ListingForm = () => {
       }}
     >
       <form
-        onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
         className="space-y-6 p-4  shadow rounded-lg"
       >
         <div>
@@ -167,7 +143,7 @@ const ListingForm = () => {
             id="renterEmail"
             value={formData.renterEmail}
             onChange={handleChange}
-            onBlur={() => checkRenterExistence(formData.renterEmail)}
+            onBlur={formData.renterEmail}
             className="mt-1 py-1 px-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             required
           />
@@ -193,7 +169,7 @@ const ListingForm = () => {
             htmlFor="expiration_date"
             className="block text-base font-medium text-black"
           >
-            Utgångdatum
+            Expiration Date might delete
           </label>
           <input
             type="date"
@@ -204,19 +180,6 @@ const ListingForm = () => {
             className="mt-1 py-1 px-2 block w-full rounded-md border-gray-300 shadow-sm"
           />
         </div>
-        {/* <div>
-          <label htmlFor="featured" className="flex items-center">
-            <input
-              type="checkbox"
-              name="featured"
-              id="featured"
-              checked={formData.featured}
-              onChange={handleChange}
-              className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-            />
-            <span className="ml-2 text-base text-black">Featured</span>
-          </label>
-        </div> */}
         <div>
           <label
             htmlFor="address"
@@ -303,7 +266,7 @@ const ListingForm = () => {
             htmlFor="property_type_id"
             className="block text-lg font-semibold text-black"
           >
-            Bostadstyp
+            Property Type
           </label>
           <select
             name="property_type_id"
@@ -312,8 +275,8 @@ const ListingForm = () => {
             onChange={handleChange}
             className="mt-2 py-3 px-2 block w-full rounded-md text-gray-500 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 sm:text-sm"
           >
-            <option value="">Välj bostadstyp</option>
-            {propertyTypes && propertyTypes.map((type) => (
+            <option value="">Select Property Type</option>
+            {propertyTypes.map((type) => (
               <option key={type.id} value={type.id}>
                 {type.name}
               </option>
@@ -325,17 +288,17 @@ const ListingForm = () => {
             htmlFor="neighborhood_id"
             className="block text-base font-medium text-black"
           >
-            Läge
+            Neighborhood
           </label>
           <select
             name="neighborhood_id"
             id="neighborhood_id"
-            value={formData.neighborhood_id}
+            // value={formData.neighborhood_id}
             onChange={handleChange}
             className="mt-2 py-3 px-2 block w-full rounded-md text-gray-500 border-gray-300 shadow-sm focus:border-blue-200 focus:ring focus:ring-blue-300 focus:ring-opacity-50 sm:text-sm"
           >
-            <option value="">Välj läge</option>
-            {neighborhoods && neighborhoods.map((neighborhood) => (
+            <option value="">Select Neighborhood</option>
+            {neighborhoods.map((neighborhood) => (
               <option key={neighborhood.id} value={neighborhood.id}>
                 {neighborhood.area}
               </option>
@@ -347,17 +310,9 @@ const ListingForm = () => {
             htmlFor="images"
             className="block text-lg font-semibold text-black"
           >
-            Länk till bild
+            Images
           </label>
           <input
-            type="text"
-            name="images_url"
-            id="images_url"
-            value={formData.images_url}
-            onChange={handleChange}
-            className="mt-1 py-1 px-2 block w-full rounded-md border-gray-300 shadow-sm"
-          />
-          {/* <input
             type="file"
             name="images"
             id="images"
@@ -374,13 +329,13 @@ const ListingForm = () => {
                 className="h-24 w-24 rounded-lg object-cover shadow-sm"
               />
             ))}
-          </div> */}
+          </div>
         </div>
         <button
           type="submit"
           className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
-          Skapa annonsförfrågan
+          Submit Listing
         </button>
       </form>
       {showRenterModal && (
@@ -409,12 +364,12 @@ const ListingForm = () => {
                       className="text-lg leading-6 font-medium text-gray-900"
                       id="modal-title"
                     >
-                      Uthyrar Information
+                      Renter Information
                     </h3>
                     <div className="mt-2">
                       <RentersForm
-                        onCreate={() => {}}
-                        renterEmail={formData.renterEmail}
+                      // onCreate={() => {}}
+                      // renterEmail={formData.renterEmail}
                       />
                     </div>
                   </div>
@@ -435,6 +390,6 @@ const ListingForm = () => {
       )}
     </div>
   );
-};
+}
 
-export default ListingForm;
+export default CopyListingForm;
