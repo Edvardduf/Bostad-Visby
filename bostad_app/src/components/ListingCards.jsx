@@ -16,6 +16,7 @@ function ListingCards() {
     }
     getListings();
   }, []);
+  
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 px-5 py-8 mx-2">
     {initResponse.map((data, index) => (

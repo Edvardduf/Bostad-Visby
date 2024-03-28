@@ -129,7 +129,7 @@ function AdminListing(listings) {
                       { label: 'Beskrivning', type: 'text' },
                       { label: 'Adress', type: 'text' },
                       { label: 'Bäddar', type: 'text' },
-                     { label: 'BilderUrl', type: 'text' },
+                      { label: 'BilderUrl', type: 'text' },
                       { label: 'Prio', type: 'checkbox' },
                       { label: 'Tomt', type: 'number' },
                       { label: 'Läge', type: 'select' },
