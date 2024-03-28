@@ -19,7 +19,7 @@ function RentersForm() {
     event.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:8000/renter/', {
+      const response = await fetch('http://localhost:8000/renters', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

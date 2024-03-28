@@ -5,6 +5,7 @@ import AdminListing from '@/components/AdminListing';
 import AdminList from '@/components/AdminList';
 import useAuthStore from '@/stores/store';
 
+
 function Admin() {
   const { token, fetchUser, userData } = useAuthStore();
   useEffect(() => {
@@ -64,7 +65,7 @@ function Admin() {
   useEffect(() => {
     async function getRenters() {
       try {
-        const response = await fetch("http://localhost:8000/renters");
+        const response = await fetch("http://localhost:8000/specialrenter");
         const data = await response.json();
         setRenters(data);
       } catch (error) {
@@ -90,7 +91,7 @@ function Admin() {
   useEffect(() => {
     async function getRentalApplications() {
       try {
-        const response = await fetch("http://localhost:8000/rental-applications");
+        const response = await fetch("http://localhost:8000/rental-app-out");
         const data = await response.json();
         setRentalApplication(data);
       } catch (error) {
@@ -107,7 +108,7 @@ function Admin() {
       <div
         className="flex-1 pl-64 overflow-auto border outline-none bg-gray-50 max-w-screen" //Ändra på pl-64 så den är responsive
       >
-      <h1 className="text-center text-2xl">Välkommen till Adminsidan, {userData.first_name}!</h1>
+      <h1 className="text-center font-semibold text-2xl mt-4">Välkommen till Admin sidan {userData.first_name}!</h1>
       {/* <AdminTable data={listings}/> */}
       <div className="mt-4">{renderContent()}</div>
     </div>

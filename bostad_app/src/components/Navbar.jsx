@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <nav className="bg-white px-4 py-4 flex justify-between items-center shadow">
-      <div>
+    <nav className="bg-white px-4 py-8 shadow flex items-center justify-center">
+      <div className="shrink-0">
         {" "}
         <a href="/">
           {" "}
@@ -145,12 +144,21 @@ function Navbar() {
             </g>
           </svg>
         </a>
+      <div className=" flex space-x-4 pt-7">
+      <Link to="/" className="text-gray-800 font-semibold hover:text-sky-600 transition duration-150 ease-in-out">Home</Link>
+        <Link to="/accommodation/" className="text-gray-800 font-semibold hover:text-sky-600 transition duration-150 ease-in-out">Accommodation</Link>
+        <Link to="/rent-out" className="text-gray-800 font-semibold hover:text-sky-600 transition duration-150 ease-in-out">Rent Out</Link>
+        <Link to="/contact-us" className="text-gray-800 font-semibold hover:text-sky-600 transition duration-150 ease-in-out">Contact Us</Link>
       </div>
+  </div>
     </nav>
   );
 }
 
 export default Navbar;
+
+
+
 
 //            <div className="relative">
 //<button onClick={() => setDropdownOpen(!dropdownOpen)} className="px-4 py-2 bg-blue-500 text-white rounded-md focus:outline-none">

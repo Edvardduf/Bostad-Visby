@@ -7,7 +7,7 @@ function SideNavLink({ route, name }) {
     <div>
       <Link
         to={"/" + route}
-        className="mb-1 flex h-10 mt-10 items-center justify-center rounded-sm bg-white p-2 md:h-20 text-black font-bold hover:bg-slate-100 hover:text-black hover:shadow-l"
+        className="mb-1 flex h-5 mt-5 items-center justify-center rounded-sm p-2 md:h-20 text-black font-semibold hover: bg-transparent hover:text-sky-700 hover:shadow-l"
       >
         {name}
       </Link>

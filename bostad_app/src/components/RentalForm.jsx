@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
-function RentalForm() {
+function RentalForm({ listingId }) {
   const [formData, setFormData] = useState({
     email: '',
     name: '',
     phone: '',
     isCompany: false,
     company: '',
-    listingId: '',
+    listingId: listingId,
     weekNumber: '',
     additionalInfo: '',
     agreedToTerms: false,
@@ -85,7 +85,10 @@ function RentalForm() {
 };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto my-10  py-4 px-4 sm:px-6 lg:px-8 bg-slate-200 rounded-sm">
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto my-10  py-4 px-4 sm:px-6 lg:px-8 rounded-sm" style={{
+      background:
+        "linear-gradient(to bottom, #FFFFFF, #EBF5FB, #E8F8F5, #E8F6F3, #EAFAF1, #EBF5FB, #FFFFFF )",
+    }}>
       <div className='text-2xl font-bold text-gray-900 text-center'>
         <h1>Bokningsförfrågan</h1>
         <p className='text-sm font-normal text-left text-gray-600 pt-2'>Om ni skickar bokningsförfrågningar på fler än ett objekt - maila då även till info@bostadvisby.se och berätta eller så skriver ni det i "Önskemål/Övrigt" delen av detta formulär</p>
@@ -208,8 +211,8 @@ function RentalForm() {
 
       <button
         type="submit"
-        className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded w-full sm:w-auto sm:px-8">
-        Submit
+        className="bg-sky-300 hover:bg-sky-400 text-white font-bold py-2 px-4 rounded w-full sm:w-auto sm:px-8">
+        Skicka förfrågan
         </button>
         {submitFeedback && <p className="text-center mt-4 text-sm text-blue-500">{submitFeedback}</p>}
         </form>

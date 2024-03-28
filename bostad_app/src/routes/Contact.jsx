@@ -9,6 +9,7 @@ function Contact() {
         "linear-gradient(to bottom, #FFFFFF, #EBF5FB, #E8F8F5, #E8F6F3, #D0ECE7, #D1F2EB, #EAFAF1 )",
     }}>
     <ListingFormik/>
+    <RentalForm></RentalForm>
     </div>
   )
 }

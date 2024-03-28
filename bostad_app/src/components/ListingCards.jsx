@@ -17,22 +17,21 @@ function ListingCards() {
     getListings();
   }, []);
   return (
-    <div className="flex flex-wrap justify-center gap-3">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 px-5 py-8 mx-2">
     {initResponse.map((data, index) => (
       <div
-        className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
+        className="bg-white shadow-lg rounded-lg overflow-hidden"
         key={index}
       >
-        {/* Listing Image (Replace 'image-placeholder.jpg' with actual image URL) */}
         <img
           className="w-full h-48 object-cover object-center"
           src={data.img.map((data1) => data1.url)}
           alt="Listing Image"
         />
 
-        <div className="px-4 py-2">
+        <div className="p-4">
           {/* Listing Title */}
-          <h3 className="text-lg font-semibold text-gray-800 truncate">
+          <h3 className="text-lg font-semibold text-black truncate">
             {data.title}
           </h3>
 
@@ -60,8 +59,8 @@ function ListingCards() {
         {/* Listing Footer */}
         <div className="px-4 pt-3 pb-2 border-t border-gray-200">
           {/* Price */}
-          <p className="text-lg text-gray-800 font-semibold">
-            Pris: {data.weeks.map((data1) => data1.price)} kr
+          <p className="text-sm text-gray-800 font-semibold">
+           Vecka {data.weeks.find((data1) => data1.week_number === 26)?.week_number}: {data.weeks.find((data1) => data1.week_number === 26)?.price || 'N/A'} kr
           </p>
           {/* Location */}
           <p className="mt-2 text-sm text-gray-600">
@@ -70,7 +69,7 @@ function ListingCards() {
           {/* More details button */}
           <Link
             to={"/accommodations/" + data.id}
-            className="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            className="mt-2 inline-block bg-sky-400 text-white px-4 py-2 rounded hover:bg-sky-500"
           >
             Mer info
           </Link>

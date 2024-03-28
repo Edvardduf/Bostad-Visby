@@ -13,7 +13,7 @@ function AdminTable(data) {
 
     setFormData({ ...formData, [name]: value });
   };
-  
+
   async function deleteRow(rowId) {
     console.log(`http://localhost:8000/${data.url}/${rowId}`);
     try {
@@ -50,7 +50,8 @@ function AdminTable(data) {
         {
           method: "PUT",
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
           },
           body: JSON.stringify(formData),
         }
@@ -72,6 +73,7 @@ function AdminTable(data) {
       // window.location.reload();
     }
   }
+  console.log(`Selected ID: ${selectedId}`);
 
   const keys =
     data && data.data && data.data.length > 0
@@ -89,10 +91,10 @@ function AdminTable(data) {
                   {keys.map((key) => (
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider bg-sky-50"
                       key={key}
                     >
-                      {key}
+                      {key !== "listings" ? key : "Listings (ID, Address)"}
                     </th>
                   ))}
                   <th className="relative py-3.5 pl-3 pr-4 sm:pr-0">
@@ -140,6 +142,8 @@ function AdminTable(data) {
                           <button
                             type="submit"
                             className="px-4 py-2 text-white bg-green-600 rounded"
+                            onClick={() => editRow(selectedId)}
+
                           >
                             Godkänn
                           </button>
@@ -175,16 +179,31 @@ function AdminTable(data) {
                   </div>
                 )}
                 {data.data.map((item, index) => (
-                  <tr key={index} className=" mx-4">
-                    {/* Dynamically render table data based on keys */}
+                  <tr key={index} className="mx-4 odd:bg-white even:bg-slate-50">
                     {keys.map((key) => (
                       <td
-                        className="px-6 py-6 whitespace-nowrap"
+                        className="px-6 py-6 whitespace-nowrap " // Allows text wrapping
                         key={`${index}-${key}`}
                       >
-                        {typeof item[key] === "object"
-                          ? JSON.stringify(item[key])
-                          : item[key]}
+                        {Array.isArray(item[key])
+                          ? // For arrays (like 'renters'), format each element to show its details
+                            item[key]
+                              .map(
+                                (element) =>
+                                  `ID: ${element.id} | ${
+                                    key === "renters"
+                                      ? `Name: ${element.first_name} ${element.last_name}`
+                                      : `Address: ${element.address}`
+                                  }`
+                              )
+                              .join("; ")
+                          : typeof item[key] === "object"
+                          ? // If it's a singular object and not 'listing', JSON stringify it. Adjust if there's specific handling needed for 'listing' or other objects.
+                            key === "listing"
+                            ? `ID: ${item[key].id} | Address: ${item[key].address}`
+                            : JSON.stringify(item[key])
+                          : // For non-object values, display as is
+                            item[key]}
                       </td>
                     ))}
                     <td className="relative py-4 pl-3 pr-4 text-sm font-medium text-right whitespace-nowrap sm:pr-0">

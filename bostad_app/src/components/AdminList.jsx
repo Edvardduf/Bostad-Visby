@@ -132,7 +132,7 @@ function AdminList() {
       <div className="min-h-screen my-0 border shadow-md"
               style={{
                 background:
-                  "linear-gradient(to bottom, #FFFFFF, #EBF5FB, #E8F8F5, #E8F6F3, #D0ECE7, #D1F2EB, #EAFAF1 )",
+                  "linear-gradient(to bottom, #FFFFFF, #EBF5FB, #E8F8F5, #E8F6F3, #EAFAF1, #EBF5FB  )",
               }}>
         {/* DELETE MODAL START */}
         {deleteModalOpen && (
@@ -306,10 +306,8 @@ function AdminList() {
               <button
                 onClick={() => setShowAddModal(true)}
                 type="button"
-                className="block px-6 py-4 text-sm font-semibold text-center text-black rounded-md shadow-sm hover:bg-white hover:text-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" style={{
-                  background:
-                    "linear-gradient(to right, #D6E6F2, #F3E2E7)",
-                }}
+                className="block px-6 py-4 text-sm font-semibold text-center text-black bg-sky-100 rounded-md shadow-sm hover:bg-white hover:text-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" 
+
               >
                 Skapa en listing
               </button>
@@ -325,7 +323,7 @@ function AdminList() {
                         scope="col"
                         className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
                       >
-                        Lisintg
+                        Listing
                       </th>
                       <th
                         scope="col"
