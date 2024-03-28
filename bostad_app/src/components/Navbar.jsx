@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
 
   return (
-    <nav className="bg-white px-4 py-8 shadow flex items-center justify-center">
+    <nav className=" bg-gradient-to-b from-cyan-50 to-white px-3 py-8 shadow flex items-center justify-center">
       <div className="shrink-0">
         {" "}
         <a href="/">
@@ -144,7 +144,7 @@ function Navbar() {
             </g>
           </svg>
         </a>
-      <div className=" flex space-x-4 pt-7">
+      <div className=" flex space-x-4 py-3 px-4 my-3  bg-[#c0e6ff04] rounded-lg">
       <Link to="/" className="text-gray-800 font-semibold hover:text-sky-600 transition duration-150 ease-in-out">Home</Link>
         <Link to="/accommodation/" className="text-gray-800 font-semibold hover:text-sky-600 transition duration-150 ease-in-out">Accommodation</Link>
         <Link to="/rent-out" className="text-gray-800 font-semibold hover:text-sky-600 transition duration-150 ease-in-out">Rent Out</Link>

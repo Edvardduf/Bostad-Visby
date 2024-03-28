@@ -87,7 +87,7 @@ function RentalForm({ listingId }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto my-10  py-4 px-4 sm:px-6 lg:px-8 rounded-sm" style={{
       background:
-        "linear-gradient(to bottom, #FFFFFF, #EBF5FB, #E8F8F5, #E8F6F3, #EAFAF1, #EBF5FB, #FFFFFF )",
+        "linear-gradient(to bottom, #FFFFFF, #EBF5FB, #E8F8F5, #FFFFFF )",
     }}>
       <div className='text-2xl font-bold text-gray-900 text-center'>
         <h1>Bokningsförfrågan</h1>

@@ -7,12 +7,14 @@ import Footer from "../components/Footer";
 function Root() {
   return (
     <div >
+      <div className="pt-5">
       <Navbar />
+      </div>
       <section
-        className="w-full pt-8 md:pt-16 lg:pt-24"
+        className="w-full pt-6 md:pt-1 lg:pt-1"
         style={{
           background:
-            "linear-gradient(to bottom, #FFFFFF, #EBF5FB, #E8F8F5, #E8F6F3, #D0ECE7, #D1F2EB, #EAFAF1 )",
+            "linear-gradient(to bottom, #FFFFFF, #EBF5FB, #E8F6F3, #D0ECE7, #D1F2EB, #EAFAF1 )",
         }}
       >
         {/* Hero Image Section */}
@@ -26,7 +28,7 @@ function Root() {
       </section>
 
       {/* Main Content Sections */}
-      <section className="bg-white h-[55vh] flex flex-col justify-center overflow-hidden">
+      <section className="bg-white h-[55vh] flex flex-col justify-center overflow-hidden  bg-gradient-to-b from-[#EAFAF1] to-[#CBD5E1]">
         <div className="container flex flex-col md:flex-row items-center justify-between px-6 mx-auto space-y-4 md:space-y-0">
           <div className="md:w-4/5 flex justify-center md:justify-start md:pr-4">
             <img
@@ -35,7 +37,7 @@ function Root() {
               className="h-[45vh] md:h-auto md:w-3/4 object-cover rounded-sm"
             />
           </div>
-          <div className="flex flex-col md:w-1/2 items-center md:items-start space-y-2 md:space-y-4 max-w-full h-auto">
+          <div className="flex flex-col md:w-1/2 items-center md:items-start space-y-2 md:space-y-4 max-w-full h-auto ">
             <h1 className="text-3xl md:text-4xl font-bold md:text-left leading-snug">
               Vill ni lyckas med er Almedalsvecka? Vi hjälper er hitta er bas!
             </h1>
@@ -56,7 +58,7 @@ function Root() {
         className="h-[55vh] flex flex-col justify-center overflow-hidden"
         style={{
           background:
-          "linear-gradient(to bottom, #CBD5E1, #E0E7FF, #FEF9C3, #FFE4D9)",
+          "linear-gradient(to bottom, #CBD5E1, #E0E7FF, #FFE4D9)",
         }}
       >
         <div className="container flex flex-col md:flex-row items-center justify-between px-6 mx-auto space-y-4 md:space-y-0 max-w-full h-auto">
@@ -94,9 +96,9 @@ function Root() {
       </section>
 
       {/* Section 3 */}
-      <section className="bg-white h-[55vh] flex flex-col justify-center overflow-auto">
+      <section className="bg-white h-[55vh] flex flex-col justify-center overflow-auto bg-gradient-to-b from-[#FFE4D9] to-white " >
         {/* Repeat the structure of the main content section here */}
-        <div className="container flex flex-col md:flex-row items-center justify-between px-6 mx-auto space-y-4 md:space-y-0 max-w-full h-auto">
+        <div className="container flex flex-col md:flex-row items-center justify-between px-6 mx-auto space-y-4 md:space-y-0 max-w-full h-auto ">
           <div className="md:w-4/6 flex justify-center md:justify-start md:pr-4">
             <img
               src="https://d13gofjvlwna3m.cloudfront.net/uploads/2021/05/rg_lergrav-scaled.jpg?auto=format%2Ccompress&format=lossless&q=60"
@@ -127,7 +129,7 @@ function Root() {
   className="h-[55vh] flex flex-col justify-between overflow-hidden"
   style={{
     background:
-      "linear-gradient(to bottom, #D6E6F2, #F3E2E7, #F3E6F5)",
+      "linear-gradient(to bottom, #FFFFFF , #D6E6F2, #F3E2E7, #F3E6F5)",
   }}
 >
   <div className="container flex flex-col md:flex-row items-center justify-between px-6 mx-auto space-y-4 md:space-y-0 pt-6 max-w-full h-auto">

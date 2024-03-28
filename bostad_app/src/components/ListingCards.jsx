@@ -17,10 +17,10 @@ function ListingCards() {
     getListings();
   }, []);
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 px-5 py-8 mx-2">
+    <div className="grid grid-cols-1 sm:grid-cols-4 gap-8 px-6 py-8 mx-2">
     {initResponse.map((data, index) => (
       <div
-        className="bg-white shadow-lg rounded-lg overflow-hidden"
+        className="bg-white shadow-xl rounded-md overflow-hidden"
         key={index}
       >
         <img
@@ -36,9 +36,9 @@ function ListingCards() {
           </h3>
 
           {/* Listing Details */}
-          <div className="mt-4">
+          <div className="mt-1">
             {/* Property Type */}
-            <p className="text-gray-700">
+            <p className="text-gray-700 mb-6">
               Läge:{" "}
               <span className="font-semibold">
                 {data.neighborhood.area}
@@ -69,7 +69,7 @@ function ListingCards() {
           {/* More details button */}
           <Link
             to={"/accommodations/" + data.id}
-            className="mt-2 inline-block bg-sky-400 text-white px-4 py-2 rounded hover:bg-sky-500"
+            className="mt-2 inline-block bg-sky-400 text-white px-4 py-1 rounded hover:bg-sky-500"
           >
             Mer info
           </Link>

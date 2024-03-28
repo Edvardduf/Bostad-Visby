@@ -4,11 +4,12 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 
+
 function Accomodation() {
   return (
     <div style={{
       background:
-        "linear-gradient(to bottom, #FFFFFF, #EBF5FB, #E8F8F5, #E8F6F3, #EAFAF1, #EBF5FB)",
+        "linear-gradient(to bottom, #FFFFFF, #EBF5FB, #FFFFFF )",
     }}>
       <Navbar />
       <div className="my-8">

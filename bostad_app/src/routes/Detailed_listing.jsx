@@ -31,7 +31,7 @@ function Detailed_listing() {
       <Navbar></Navbar>
     <div className="flex justify-center w-full h-full"style={{
       background:
-        "linear-gradient(to bottom, #FFFFFF, #EBF5FB, #E8F8F5, #E8F6F3, #EAFAF1, #FFFFFF )",
+        "linear-gradient(to bottom, #FFFFFF, #EBF5FB, #FFFFFF )",
     }}>
       {initResponse ? (
         <div className="flex flex-col lg:flex-row justify-center items-start max-w-7xl mx-auto px-4 py-8 w-full space-y-8 lg:space-y-0 lg:space-x-8">
@@ -45,16 +45,16 @@ function Detailed_listing() {
             ))}
 
             {/* Listing Details */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white py-4 px-3 rounded-lg">
               {/* Left Column */}
               <div>
                 <p className="text-black mb-2">
                   <span className="font-semibold">Adress: </span>
                   {initResponse.address}
                 </p>
-                <p className="text-black mb-2">
+                <p className="text-black mb-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {initResponse.weeks.map((item, index) => (
-                    <span className=" font-normal" key={index}> Vecka {item.week_number}: {item.price} kr</span>
+                    <span className=" font-medium underline text-gray-700" key={index}> Vecka {item.week_number}: {item.price} kr</span>
                   ))}
                 </p>
                 <p className="text-black mb-2">
@@ -70,7 +70,7 @@ function Detailed_listing() {
               {/* Right Column */}
               <div>
                 <p className="text-black mb-2">
-                  <span className="font-semibold">Tomt:</span> {initResponse.lot_size}m²
+                  <span className="font-semibold">Tomt:</span> {initResponse.lot_size} m²
                 </p>
                 <p className="text-black mb-2">
                   <span className="font-semibold">Bostadstyp:</span> {initResponse.property.name}
@@ -83,9 +83,9 @@ function Detailed_listing() {
             </div>
 
             {/* Listing Description */}
-            <div className="mt-8">
-              <h3 className="text-xl font-semibold mb-4">Beskrivning</h3>
-              <p className="text-black">{initResponse.description}</p>
+            <div className="mt-8 bg-white px-2 rounded-md">
+              <h3 className="text-xl font-semibold mb-4 bg-white">Beskrivning</h3>
+              <p className="text-black bg-white">{initResponse.description}</p>
             </div>
           </div>
 
